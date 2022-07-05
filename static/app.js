@@ -1,4 +1,4 @@
-// grab input 
+
 class BoggleGame {
     /* make a new game at this DOM id */
   
@@ -9,11 +9,10 @@ class BoggleGame {
       this.score = 0;
       this.words = new Set();
       this.board = $("#" + boardId);
-  
-      // every 1000 msec, "tick"
+          // every 1000 msec, "tick"
       this.timer = setInterval(this.tick.bind(this), 1000);
   
-      $(".add-word", this.board).on("submit", this.handleSubmit.bind(this));
+      $("#input-word", this.board).on("submit", this.handleSubmit.bind(this));
     }
   
     /* show word in list of words */
@@ -91,13 +90,14 @@ class BoggleGame {
     /* end of game: score and update message. */
   
     async scoreGame() {
-      $(".add-word", this.board).hide();
-      const resp = await axios.post("/post-score", { score: this.score });
-      if (resp.data.brokeRecord) {
+      $("#word", this.board).hide();
+      const resp = await axios.post("/show-score", { score: this.score });
+      if (resp.data.newRecord) {
         this.showMessage(`New record: ${this.score}`, "ok");
       } else {
         this.showMessage(`Final score: ${this.score}`, "ok");
       }
     }
   }
-  
+  // why hide on line 94?
+  let play = new BoggleGame("container", 60)
