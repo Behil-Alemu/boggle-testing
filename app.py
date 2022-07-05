@@ -7,8 +7,8 @@ from flask_debugtoolbar import DebugToolbarExtension
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "chickenzarecool21837"
 
-app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-debug = DebugToolbarExtension(app)
+# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+# debug = DebugToolbarExtension(app)
 
 
 boggle_game = Boggle()
@@ -47,6 +47,8 @@ def check_word():
 @app.route("/show-score", methods=["POST"])
 def show_score():
     score= request.json["score"]
+    breakpoint()
+    # import pdb; pdb.set_trace()
     highscore = session.get("highscore",0)
     num_play = session.get("num_play",0)
 
