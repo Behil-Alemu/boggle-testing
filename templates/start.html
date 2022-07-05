@@ -1,0 +1,38 @@
+{% extends 'base.html'  %}
+{% block title %}Boggle Game{% endblock %}
+
+{% block content %}
+<h1>BOGGLE</h1>
+<table class="box">
+    <tbody>
+      {%for row in responses%}
+        <tr>
+         {%for cell in row%}
+            <td>{{cell}}</td> 
+         {%endfor%}
+        </tr>   
+      {%endfor%}
+    </tbody>
+</table>
+<form action="/check-word" id='word'>
+    <input type="text" class='word' placeholder="word" name="word">
+    <button class="button">Check!</button>
+</form>
+
+<!-- why is the form not a post method? -->
+
+<section>
+    <p>
+        Score: <b class="score">0</b>
+        Seconds Left: <b class="timer"></b>
+    </p>
+
+    <ul class="words">
+        <!-- li will be appended after checking for validation-->   
+    </ul>
+    
+    <p class="msg">
+        <!-- our JS will put messages here dynamically -->
+    </p>
+</section>
+{% endblock %}

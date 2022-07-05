@@ -1,0 +1,12 @@
+.box{
+    background-color: rgb(223, 200, 245);
+    font-size: 30px;
+}
+h1{
+    font-size: 50px;
+    color: pink;
+}
+
+#container{
+    align-content: center;
+}
